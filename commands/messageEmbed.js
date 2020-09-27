@@ -5,7 +5,6 @@ const ms = require('ms');
 
 module.exports.run = async (client, message, args) => {
 
-    const deleteMessage = collected.first().content.toLowerCase()
     message.channel.send(`Say what for title you want for your embed. `)
     var allembed = new discord.MessageEmbed()
      .setTitle("Empty")
@@ -15,6 +14,7 @@ module.exports.run = async (client, message, args) => {
 
         message.channel.awaitMessages(m => m.author.id == message.author.id,
             {max: 1}).then(collected => {
+                const deleteMessage = collected.first().content.toLowerCase()
                 if (collected.first().content.toLowerCase() == 'cancel') {
                     deleteMessage.delete()
                     var cancelEmbed = new discord.MessageEmbed()
@@ -38,6 +38,7 @@ module.exports.run = async (client, message, args) => {
 
                     message.channel.awaitMessages(m => m.author.id == message.author.id,
                         {max: 1}).then(collected => {
+                            const deleteMessage = collected.first().content.toLowerCase()
                             if (collected.first().content.toLowerCase() == 'cancel') {
                                 deleteMessage.delete()
                                 var cancelEmbed = new discord.MessageEmbed()
@@ -61,6 +62,7 @@ module.exports.run = async (client, message, args) => {
 
                                 message.channel.awaitMessages(m => m.author.id == message.author.id,
                                     {max: 1}).then(collected => {
+                                        const deleteMessage = collected.first().content.toLowerCase()
                                         if (collected.first().content.toLowerCase() == 'cancel') {
                                             deleteMessage.delete()
                                             var cancelEmbed = new discord.MessageEmbed()
@@ -85,6 +87,7 @@ module.exports.run = async (client, message, args) => {
 
                                             message.channel.awaitMessages(m => m.author.id == message.author.id,
                                                 {max: 1}).then(collected => {
+                                                    const deleteMessage = collected.first().content.toLowerCase()
                                                     if (collected.first().content.toLowerCase() == 'cancel') {
                                                         deleteMessage.delete()
                                                         var cancelEmbed = new discord.MessageEmbed()
@@ -109,6 +112,7 @@ module.exports.run = async (client, message, args) => {
 
                                                         message.channel.awaitMessages(m => m.author.id == message.author.id,
                                                             {max: 1}).then(collected => {
+                                                                const deleteMessage = collected.first().content.toLowerCase()
                                                                 if (collected.first().content.toLowerCase() == 'cancel') {
                                                                     deleteMessage.delete()
                                                                     var cancelEmbed = new discord.MessageEmbed()
