@@ -17,7 +17,7 @@ module.exports.run = async (client, message, args) => {
         message.channel.awaitMessages(m => m.author.id == message.author.id,
             {max: 1}).then(collected => {
                 if (collected.first().content.toLowerCase() == 'cancel') {
-                    message.delete()
+                    collected.first().content.toLowerCase().delete()
                     var cancelEmbed = new discord.MessageEmbed()
                     .setColor("RANDOM")
                     .setTitle("Canceled the command")
@@ -27,7 +27,7 @@ module.exports.run = async (client, message, args) => {
                     message.delete()
                     message.channel.send("None title setted! Say what for description you want.")
                 } else {
-                    message.delete()
+                    collected.first().content.toLowerCase().delete()
                     var collectedTitle = collected.first().content.toLowerCase()
             
                     var beginEmbed = new discord.MessageEmbed()
@@ -40,17 +40,17 @@ module.exports.run = async (client, message, args) => {
                     message.channel.awaitMessages(m => m.author.id == message.author.id,
                         {max: 1}).then(collected => {
                             if (collected.first().content.toLowerCase() == 'cancel') {
-                                message.delete()
+                                collected.first().content.toLowerCase().delete()
                                 var cancelEmbed = new discord.MessageEmbed()
                                 .setColor("RANDOM")
                                 .setTitle("Canceled the command")
                                 .setDescription("I canceled the command to make a embed!")
                                 return message.channel.send(cancelEmbed)
                             } else if (collected.first().content.toLowerCase() == 'none'){
-                                message.delete()
+                                collected.first().content.toLowerCase().delete()
                                 message.channel.send("None description setted! Say what for hex color you want.")
                             } else {
-                                message.delete()
+                                collected.first().content.toLowerCase().delete()
                                 var collectedDescription = collected.first().content.toLowerCase()
 
                                 var titleEmbed = new discord.MessageEmbed()
@@ -63,17 +63,17 @@ module.exports.run = async (client, message, args) => {
                                 message.channel.awaitMessages(m => m.author.id == message.author.id,
                                     {max: 1}).then(collected => {
                                         if (collected.first().content.toLowerCase() == 'cancel') {
-                                            message.delete()
+                                            collected.first().content.toLowerCase().delete()
                                             var cancelEmbed = new discord.MessageEmbed()
                                             .setColor("RANDOM")
                                             .setTitle("Canceled the command")
                                             .setDescription("I canceled the command to make a embed!")
                                             return message.channel.send(cancelEmbed)
                                         } else if (collected.first().content.toLowerCase() == 'none'){
-                                            message.delete()
+                                            collected.first().content.toLowerCase().delete()
                                             message.channel.send("None title setted! Say what for footer you want.")
                                         } else {
-                                            message.delete()
+                                            collected.first().content.toLowerCase().delete()
                                             var collectedColor = collected.first().content.toLowerCase()
                                             
                                             var titleEmbed = new discord.MessageEmbed()
@@ -87,17 +87,17 @@ module.exports.run = async (client, message, args) => {
                                             message.channel.awaitMessages(m => m.author.id == message.author.id,
                                                 {max: 1}).then(collected => {
                                                     if (collected.first().content.toLowerCase() == 'cancel') {
-                                                        message.delete()
+                                                        collected.first().content.toLowerCase().delete()
                                                         var cancelEmbed = new discord.MessageEmbed()
                                                         .setColor("RANDOM")
                                                         .setTitle("Canceled the command")
                                                         .setDescription("I canceled the command to make a embed!")
                                                         return message.channel.send(cancelEmbed)
                                                     } else if (collected.first().content.toLowerCase() == 'none'){
-                                                        message.delete()
+                                                        collected.first().content.toLowerCase().delete()
                                                         message.channel.send("None title setted! Say what for image you want.")
                                                     } else {
-                                                        message.delete()
+                                                        collected.first().content.toLowerCase().delete()
                                                         var collectedFooter = collected.first().content.toLowerCase()
                                                         
                                                         var titleEmbed = new discord.MessageEmbed()
@@ -111,17 +111,17 @@ module.exports.run = async (client, message, args) => {
                                                         message.channel.awaitMessages(m => m.author.id == message.author.id,
                                                             {max: 1}).then(collected => {
                                                                 if (collected.first().content.toLowerCase() == 'cancel') {
-                                                                    message.delete()
+                                                                    collected.first().content.toLowerCase().delete()
                                                                     var cancelEmbed = new discord.MessageEmbed()
                                                                     .setColor("RANDOM")
                                                                     .setTitle("Canceled the command")
                                                                     .setDescription("I canceled the command to make a embed!")
                                                                     return message.channel.send(cancelEmbed)
                                                                 } else if (collected.first().content.toLowerCase() == 'none'){
-                                                                    message.delete()
+                                                                    collected.first().content.toLowerCase().delete()
                                                                     message.channel.send("Succesfully maked the embed!")
                                                                 } else {
-                                                                    message.delete()
+                                                                    collected.first().content.toLowerCase().delete()
                                                                     var collectedImage = collected.first().content.toLowerCase()
                                                                 
                                                                     var titleEmbed = new discord.MessageEmbed()
