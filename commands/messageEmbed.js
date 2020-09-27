@@ -80,6 +80,7 @@ module.exports.run = async (client, message, args) => {
                                             .setTitle(`${collectedTitle}`)
                                             .setDescription(`${collectedDescription}`)
                                             .setColor(`${collectedColor}`)
+                                            .setFooter("Empty")
                                             msg.edit(titleEmbed)
                                             message.channel.send(`Setted the color to: **${collected.first().content.toLowerCase()}**, what do you want for footer?`).then(msg => msg.delete({ timeout: 10000}))
 
