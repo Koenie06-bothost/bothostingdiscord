@@ -5,6 +5,8 @@ const ms = require('ms');
 
 module.exports.run = async (client, message, args) => {
 
+    const message = collected.first().content.toLowerCase()
+
     message.channel.send(`Say what for title you want for your embed. `)
     var allembed = new discord.MessageEmbed()
      .setTitle("Empty")
