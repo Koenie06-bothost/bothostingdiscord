@@ -142,7 +142,7 @@ module.exports.run = async (client, message, args) => {
                                                                                 
                                                                             } else {
                                                                                 
-                                                                                var collectedChannel = collected.first().content
+                                                                                var channel = collected.first().content
                                                                             
                                                                                 var titleEmbed = new discord.MessageEmbed()
                                                                                 .setTitle(`${collectedTitle}`)
@@ -150,7 +150,7 @@ module.exports.run = async (client, message, args) => {
                                                                                 .setColor(`${collectedColor}`)
                                                                                 .setFooter(`${collectedFooter}`)
                                                                                 .setImage(`${collectedImage}`)
-                                                                                collectedChannel.send(titleEmbed)
+                                                                                channel.send(titleEmbed)
                                                                                 
                                                                                 collected.first().delete()
                                                                                 message.channel.send(`Succesfully sended the message in ${collectedChannel}`).then(msg => msg.delete({ timeout: 10000}))
@@ -160,15 +160,6 @@ module.exports.run = async (client, message, args) => {
                                                                     
                                                                     var collectedImage = collected.first().content
                                                                 
-                                                                    var titleEmbed = new discord.MessageEmbed()
-                                                                    .setTitle(`${collectedTitle}`)
-                                                                    .setDescription(`${collectedDescription}`)
-                                                                    .setColor(`${collectedColor}`)
-                                                                    .setFooter(`${collectedFooter}`)
-                                                                    .setImage(`${collectedImage}`)
-                                                                    msg.edit(titleEmbed)
-                                                                    collected.first().delete()
-                                                                    message.channel.send(`Setted the footer to: **${collected.first().content}**, Succesfully made the embed! In which channel do wanna send the embed?`).then(msg => msg.delete({ timeout: 10000}))
 
                                                                     message.channel.awaitMessages(m => m.author.id == message.author.id,
                                                                         {max: 1}).then(collected => {
@@ -183,7 +174,7 @@ module.exports.run = async (client, message, args) => {
                                                                                 
                                                                             } else {
                                                                                 
-                                                                                var collectedChannel = collected.first().content
+                                                                                var channel = collected.first().content
                                                                             
                                                                                 var titleEmbed = new discord.MessageEmbed()
                                                                                 .setTitle(`${collectedTitle}`)
@@ -191,7 +182,7 @@ module.exports.run = async (client, message, args) => {
                                                                                 .setColor(`${collectedColor}`)
                                                                                 .setFooter(`${collectedFooter}`)
                                                                                 .setImage(`${collectedImage}`)
-                                                                                collectedChannel.send(titleEmbed)
+                                                                                channel.send(titleEmbed)
                                                                                 
                                                                                 collected.first().delete()
                                                                                 message.channel.send(`Succesfully sended the message in ${collectedChannel}`).then(msg => msg.delete({ timeout: 10000}))
