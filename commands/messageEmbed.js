@@ -100,7 +100,7 @@ module.exports.run = async (client, message, args) => {
                                                         .setDescription("I canceled the command to make a embed!")
                                                     } else if (collected.first().content == 'none'){
                                                         
-                                                        message.channel.send("None title setted! Say what for image you want.")
+                                                        message.channel.send("None title setted! Say what for Footer you want.")
                                                     } else {
                                                         
                                                         var collectedFooter = collected.first().content
@@ -127,7 +127,35 @@ module.exports.run = async (client, message, args) => {
                                                                     
                                                                 } else if (collected.first().content == 'none'){
                                                                     
-                                                                    //message.channel.send("Succesfully maked the embed! In which channel do you want to send?")
+                                                                    message.channel.send("None Image setted! Say what for Channel you want to send the embed")
+
+                                                                    message.channel.awaitMessages(m => m.author.id == message.author.id,
+                                                                        {max: 1}).then(collected => {
+                                                                            const deleteMessage = collected.first().content
+                                                                            if (collected.first().content == 'cancel') {
+                                                                                
+                                                                                var cancelEmbed = new discord.MessageEmbed()
+                                                                                .setColor("RANDOM")
+                                                                                .setTitle("Canceled the command")
+                                                                                .setDescription("I canceled the command to make a embed!")
+                                                                                return message.channel.send(cancelEmbed)
+                                                                                
+                                                                            } else {
+                                                                                
+                                                                                var collectedChannel = collected.first().content
+                                                                            
+                                                                                var titleEmbed = new discord.MessageEmbed()
+                                                                                .setTitle(`${collectedTitle}`)
+                                                                                .setDescription(`${collectedDescription}`)
+                                                                                .setColor(`${collectedColor}`)
+                                                                                .setFooter(`${collectedFooter}`)
+                                                                                .setImage(`${collectedImage}`)
+                                                                                collectedChannel.send(titleEmbed)
+                                                                                
+                                                                                collected.first().delete()
+                                                                                message.channel.send(`Succesfully sended the message in ${collectedChannel}`).then(msg => msg.delete({ timeout: 10000}))
+                                                                            }
+                                                                        })
                                                                 } else {
                                                                     
                                                                     var collectedImage = collected.first().content
@@ -140,7 +168,35 @@ module.exports.run = async (client, message, args) => {
                                                                     .setImage(`${collectedImage}`)
                                                                     msg.edit(titleEmbed)
                                                                     collected.first().delete()
-                                                                    message.channel.send(`Setted the footer to: **${collected.first().content}**, Succesfully made the embed!`).then(msg => msg.delete({ timeout: 10000}))
+                                                                    message.channel.send(`Setted the footer to: **${collected.first().content}**, Succesfully made the embed! In which channel do wanna send the embed?`).then(msg => msg.delete({ timeout: 10000}))
+
+                                                                    message.channel.awaitMessages(m => m.author.id == message.author.id,
+                                                                        {max: 1}).then(collected => {
+                                                                            const deleteMessage = collected.first().content
+                                                                            if (collected.first().content == 'cancel') {
+                                                                                
+                                                                                var cancelEmbed = new discord.MessageEmbed()
+                                                                                .setColor("RANDOM")
+                                                                                .setTitle("Canceled the command")
+                                                                                .setDescription("I canceled the command to make a embed!")
+                                                                                return message.channel.send(cancelEmbed)
+                                                                                
+                                                                            } else {
+                                                                                
+                                                                                var collectedChannel = collected.first().content
+                                                                            
+                                                                                var titleEmbed = new discord.MessageEmbed()
+                                                                                .setTitle(`${collectedTitle}`)
+                                                                                .setDescription(`${collectedDescription}`)
+                                                                                .setColor(`${collectedColor}`)
+                                                                                .setFooter(`${collectedFooter}`)
+                                                                                .setImage(`${collectedImage}`)
+                                                                                collectedChannel.send(titleEmbed)
+                                                                                
+                                                                                collected.first().delete()
+                                                                                message.channel.send(`Succesfully sended the message in ${collectedChannel}`).then(msg => msg.delete({ timeout: 10000}))
+                                                                            }
+                                                                        })
                                                                 }
                                                             })
                                                     }
