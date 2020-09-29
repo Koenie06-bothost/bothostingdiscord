@@ -142,15 +142,15 @@ module.exports.run = async (client, message, args) => {
                                                                                 
                                                                             } else {
                                                                                 
-                                                                                var channel = collected.first().content
+                                                                                const channel = collected.first().content
                                                                             
-                                                                                var titleEmbed = new discord.MessageEmbed()
+                                                                                var endEmbed = new discord.MessageEmbed()
                                                                                 .setTitle(`${collectedTitle}`)
                                                                                 .setDescription(`${collectedDescription}`)
                                                                                 .setColor(`${collectedColor}`)
                                                                                 .setFooter(`${collectedFooter}`)
                                                                                 .setImage(`${collectedImage}`)
-                                                                                channel.send(titleEmbed)
+                                                                                channel.send(endEmbed)
                                                                                 
                                                                                 collected.first().delete()
                                                                                 message.channel.send(`Succesfully sended the message in ${collectedChannel}`).then(msg => msg.delete({ timeout: 10000}))
@@ -174,7 +174,7 @@ module.exports.run = async (client, message, args) => {
                                                                                 
                                                                             } else {
                                                                                 
-                                                                                var channel = collected.first().content
+                                                                                const channel = collected.first().content
                                                                             
                                                                                 var titleEmbed = new discord.MessageEmbed()
                                                                                 .setTitle(`${collectedTitle}`)
