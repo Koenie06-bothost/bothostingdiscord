@@ -34,7 +34,7 @@ module.exports.run = async (client, message, args) => {
                      .setDescription("Empty")
                      .setFooter("Empty")
                     msg.edit(beginEmbed)
-                    collected.first().delete()
+                    collected.first().content.delete()
                     message.channel.send(`Setted the title to: **${collected.first().content}**, what do you want for description?`).then(msg => msg.delete({ timeout: 10000}))
 
                     message.channel.awaitMessages(m => m.author.id == message.author.id,
@@ -59,7 +59,7 @@ module.exports.run = async (client, message, args) => {
                                  .setDescription(`${collectedDescription}`)
                                  .setFooter("Empty")
                                 msg.edit(titleEmbed)
-                                collected.first().delete()
+                                collected.first().content.delete()
                                 message.channel.send(`Setted the description to: **${collected.first().content}**, what do you want for hex color?`).then(msg => msg.delete({ timeout: 10000}))
 
                                 message.channel.awaitMessages(m => m.author.id == message.author.id,
@@ -71,8 +71,8 @@ module.exports.run = async (client, message, args) => {
                                             .setColor("RANDOM")
                                             .setTitle("Canceled the command")
                                             .setDescription("I canceled the command to make a embed!")
-                                            return message.channel.send(cancelEmbed)
-                                            collected.first().delete()
+                                            message.channel.send(cancelEmbed)
+                                            collected.first().content.delete()
                                         } else if (collected.first().content == 'none'){
                                             
                                             message.channel.send("None title setted! Say what for footer you want.")
@@ -86,7 +86,7 @@ module.exports.run = async (client, message, args) => {
                                             .setColor(`${collectedColor}`)
                                             .setFooter("Empty")
                                             msg.edit(titleEmbed)
-                                            collected.first().delete()
+                                            collected.first().content.delete()
                                             message.channel.send(`Setted the color to: **${collected.first().content}**, what do you want for footer?`).then(msg => msg.delete({ timeout: 10000}))
 
                                             message.channel.awaitMessages(m => m.author.id == message.author.id,
@@ -111,7 +111,7 @@ module.exports.run = async (client, message, args) => {
                                                         .setColor(`${collectedColor}`)
                                                         .setFooter(`${collectedFooter}`)
                                                         msg.edit(titleEmbed)
-                                                        collected.first().delete()
+                                                        collected.first().content.delete()
                                                         message.channel.send(`Setted the footer to: **${collected.first().content}**, what do you want for Image?`).then(msg => msg.delete({ timeout: 10000}))
 
                                                         message.channel.awaitMessages(m => m.author.id == message.author.id,
@@ -139,7 +139,7 @@ module.exports.run = async (client, message, args) => {
                                                                     .setFooter(`${collectedFooter}`)
                                                                     .setImage(`${collectedImage}`)
                                                                     msg.edit(titleEmbed)
-                                                                    collected.first().delete()
+                                                                    collected.first().content.delete()
                                                                     message.channel.send(`Setted the footer to: **${collected.first().content}**, Succesfully made the embed!`).then(msg => msg.delete({ timeout: 10000}))
                                                                 }
                                                             })
