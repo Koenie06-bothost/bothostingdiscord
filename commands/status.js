@@ -10,8 +10,8 @@ module.exports.run = async (client, message, args) => {
 
     if(args[1] == 'offline') {
         var offlineEmbed = new discord.MessageEmbed()
-         .setColor("#07db00")
-         .setTitle("Offline")
+         .setColor("#ff0000")
+         .setTitle("__**Offline**__")
          .setDescription(`The bot is at the moment offline, so you can't use it!`)
          .setTimestamp()
         channel.send(offlineEmbed)
