@@ -8,6 +8,10 @@ module.exports.run = async (client, message, args) => {
 
     const channel = message.member.guild.channels.cache.find(c => c.name == "bot-status")
 
+    if(!channel) return;
+    
+    channel.bulkDelete(99);
+
     if(args[1] == 'offline') {
         var offlineEmbed = new discord.MessageEmbed()
          .setColor("#ff0000")
