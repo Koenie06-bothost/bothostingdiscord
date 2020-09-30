@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args) => {
 
     if(args[1] == 'online') {
         var onlineEmbed = new discord.MessageEmbed()
-         .setColor("#ff0000")
+         .setColor("#02c405")
          .setTitle("__**Online**__")
          .setDescription(`The bot is at the moment online, so you can use it!`)
          .setTimestamp()
@@ -28,7 +28,7 @@ module.exports.run = async (client, message, args) => {
 
     if(args[1] == 'ma') {
         var onlineEmbed = new discord.MessageEmbed()
-         .setColor("#ff0000")
+         .setColor("#f5a40f")
          .setTitle("__**Maintenance**__")
          .setDescription(`The bot is at the moment maintenance, so there can be errors.!`)
          .setTimestamp()
