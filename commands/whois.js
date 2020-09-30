@@ -14,7 +14,9 @@ module.exports.run = async (client, message, args) => {
     if(roles == 0) roleNames = "None roles"
 
     var status = mentionedMember.presence.status;
-    if(status == 'dnd') status = "<:DNDdiscord:760895831695032400> Do Not Disturb"
+    if(status == 'dnd') status = "<:dnd:760898414615068672> Do Not Disturb"
+    if(status == 'online') status = "<:online:760898450610061392> Online"
+    if(status == 'offline') status = "<:offline:760898600510160916> Offline"
 
     const userEmbed = new discord.MessageEmbed()
      .setTitle(`All user information of **${mentionedUser.username}**:`)
