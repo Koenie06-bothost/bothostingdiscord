@@ -13,7 +13,6 @@ module.exports.run = async (client, message, args) => {
     if(!saveMessage) return message.reply("Use the command like this: <?save message/emoji (what you wanna save)>")
 
     if(args[1] == "message") {
-        message.channel.send(`Just saved the message: **${saveMessage}**`)
         if(!saves[message.author.id]) saves[message.author.id] = {
             save: message.author.id
         };
@@ -21,6 +20,8 @@ module.exports.run = async (client, message, args) => {
         fs.writeFile("./saves.json", JSON.stringify(saves), (err) =>{
             if(err) console.log(err);
         });
+
+        message.channel.send(`Just saved the message: **${saveMessage}**`)
     } 
 
 }
