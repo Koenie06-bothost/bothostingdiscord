@@ -11,6 +11,7 @@ module.exports.run = async (client, message, args) => {
     if(!channel) return;
     
     channel.bulkDelete(99);
+    message.delete()
 
     if(args[1] == 'offline') {
         var offlineEmbed = new discord.MessageEmbed()
