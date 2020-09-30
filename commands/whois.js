@@ -22,7 +22,7 @@ module.exports.run = async (client, message, args) => {
     const userEmbed = new discord.MessageEmbed()
      .setTitle(`All user information of **${mentionedUser.username}**:`)
      .addField(`**User Name: **`, `${mentionedUser.tag}`)
-     .addField(`**User Nickname: **`, mentionedUser)
+     .addField(`**User Nickname: **`, mentionedUser.username)
      .addField(`**User ID: **`, `${mentionedUser.id}`)
      .addField(`**User Status: **`, `${status}`)
      .addField(`**User Game: **`, `${mentionedMember.presence.activities[0] ? mentionedMember.presence.activities[0].name : "None"}`)
