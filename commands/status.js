@@ -30,7 +30,7 @@ module.exports.run = async (client, message, args) => {
         var onlineEmbed = new discord.MessageEmbed()
          .setColor("#f5a40f")
          .setTitle("__**Maintenance**__")
-         .setDescription(`The bot is at the moment maintenance, so there can be errors.!`)
+         .setDescription(`The bot is at the moment in maintenance, so there can be errors.!`)
          .setTimestamp()
         channel.send(onlineEmbed)
     }
