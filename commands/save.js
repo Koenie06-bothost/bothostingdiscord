@@ -15,7 +15,7 @@ module.exports.run = async (client, message, args) => {
     if(args[1] == "message") {
         message.channel.send(`Just saved the message: **${saveMessage}**`)
         if(!saves[message.author.id]) saves[message.author.id] = {
-            save: saveMessage
+            save: message.author.id
         };
 
         fs.writeFile("./saves.json", JSON.stringify(saves), (err) =>{
