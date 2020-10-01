@@ -45,6 +45,17 @@ var swearWords = ["kanker", "hoer", "tyfus"]
 bot.on('message', async message=>{
 
     if(message.author.bot) return;
+
+    for (let i = 0; i < swearWords.length; i++) {
+        
+        if (msg.includes(swearWords[i])){
+
+            message.delete();
+
+            return message.reply("Please don't swear!").then(msg => msg.delete({timeout: 5000}));
+        }
+    }
+    
     if(message.channel.type == "dm") return;
 
     var randomXP = Math.floor(Math.random(1) * 10) + 1;
@@ -92,17 +103,7 @@ bot.on('message', async message=>{
     var command = messageArray[0];
     var commands = bot.commands.get(command.slice(prefix.length));
     if(commands) commands.run(bot,message, args);
-    if(!message.content.startsWith(prefix)) return;
-
-    for (let i = 0; i < swearWords.length; i++) {
-        
-        if (msg.includes(swearWords[i])){
-
-            message.delete();
-
-            return message.reply("Please don't swear!").then(msg => msg.delete({timeout: 5000}));
-        }
-    } 
+    if(!message.content.startsWith(prefix)) return; 
 
     
 
