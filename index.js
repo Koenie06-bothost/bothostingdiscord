@@ -8,8 +8,6 @@ const { error } = require('console');
 
 const xp = require('./levels.json')
 
-const PREFIX = '?';
-
 bot.on('ready', async () =>{
     console.log(`---------------`)
         console.log(`Setting up the bot...`);
@@ -45,6 +43,9 @@ var swearWords = ["kanker", "hoer", "tyfus"]
 
 bot.on('message', async message=>{
 
+    if(message.author.bot) return;
+    if(message.channel.type == "dm") return;
+
     let xpAdd = Math.floor(Math.random() * 7) + 8;
 
     var guildXP = message.guild;
@@ -78,13 +79,15 @@ bot.on('message', async message=>{
         if(err) console.log(err)
     });
 
-    let args = message.content.slice(PREFIX.length).split(" ");
+    var prefix = botConfig.prefix;
+
+    let args = message.content.slice(prefix.length).split(" ");
     var msg = message.content.toLowerCase();
     var messageArray = message.content.split(" ");
     var command = messageArray[0];
-    var commands = bot.commands.get(command.slice(PREFIX.length));
+    var commands = bot.commands.get(command.slice(prefix.length));
     if(commands) commands.run(bot,message, args);
-    if(!message.content.startsWith(PREFIX)) return;  
+    if(!message.content.startsWith(prefix)) return;
 
     for (let i = 0; i < swearWords.length; i++) {
         
@@ -95,6 +98,16 @@ bot.on('message', async message=>{
             return message.reply("Please don't swear!").then(msg => msg.delete({timeout: 5000}));
         }
     } 
+
+    var prefixes = JSON.parse(fs.readFileSync("./prefixes.json"));
+
+    if(!prefixes[message.guild.id]){
+        prefixes[message.guild.id] = {
+        prefixes: prefix
+        };
+    }
+
+    var prefix = prefixes[message.guild.id].prefixes;
 
     switch(args[0]){
         case 'offline':
