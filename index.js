@@ -42,20 +42,20 @@ fs.readdir("./commands/", (err, files) => {
 
 var swearWords = ["kanker", "hoer", "tyfus"]
 
+for (let i = 0; i < swearWords.length; i++) {
+        
+    if (msg.includes(swearWords[i])){
+
+        message.delete();
+
+        return message.reply("Please don't swear!").then(msg => msg.delete({timeout: 5000}));
+    }
+}
+
 bot.on('message', async message=>{
 
     if(message.author.bot) return;
 
-    for (let i = 0; i < swearWords.length; i++) {
-        
-        if (msg.includes(swearWords[i])){
-
-            message.delete();
-
-            return message.reply("Please don't swear!").then(msg => msg.delete({timeout: 5000}));
-        }
-    }
-    
     if(message.channel.type == "dm") return;
 
     var randomXP = Math.floor(Math.random(1) * 10) + 1;
