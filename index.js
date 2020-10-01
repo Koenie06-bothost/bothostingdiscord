@@ -59,6 +59,10 @@ bot.on('message', async message=>{
         }
     }
 
+    fs.writeFile("./levels.json", JSON.stringify(levelFile), err => {
+        if(err) return console.log(err)
+    });
+
     levelFile[idUser].xp += randomXP;
 
     var levelUser = levelFile[idUser].level;
@@ -75,6 +79,10 @@ bot.on('message', async message=>{
 
         message.channel.send(`GG ${message.author}, You've reached level ${levelFile[idUser].level}`);
     }
+
+    fs.writeFile("./levels.json", JSON.stringify(levelFile), err => {
+        if(err) return console.log(err)
+    });
 
     var prefix = botConfig.prefix;
 
