@@ -2,15 +2,14 @@ const discord = require('discord.js');
 const bot = new discord.Client();
 const fs = require('fs');
 const ms = require('ms');
-const saves = JSON.parse(fs.readFileSync("./saves.json", "utf8"));
 
 module.exports.run = async (client, message, args) => {
 
-    const channel = message.member.guild.channels.cache.find(c => c.name == "bot-status")
+    const channel = message.member.guild.channels.cache.find(c => c.name == "「📊」bot-status")
 
     if(!channel) return;
     
-    channel.bulkDelete(99);
+    channel.bulkDelete(1);
     message.delete()
 
     if(args[1] == 'offline') {
