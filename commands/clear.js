@@ -3,6 +3,9 @@ const bot = new discord.Client();
 
 module.exports.run = async (client, message, args) => {
 
+            var prefix = botConfig.prefix;
+            if(!message.content.startsWith(prefix)) return;
+
             if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('You can\'t use this command!')
             if(!args[1]) return message.reply('Say how many messages you want to delete!').then(msg => msg.delete({ timeout: 5000}));
             message.delete()
