@@ -42,16 +42,6 @@ fs.readdir("./commands/", (err, files) => {
 
 var swearWords = ["kanker", "hoer", "tyfus"]
 
-for (let i = 0; i < swearWords.length; i++) {
-        
-    if (msg.includes(swearWords[i])){
-
-        message.delete();
-
-        return message.reply("Please don't swear!").then(msg => msg.delete({timeout: 5000}));
-    }
-}
-
 bot.on('message', async message=>{
 
     if(message.author.bot) return;
@@ -103,6 +93,17 @@ bot.on('message', async message=>{
     var command = messageArray[0];
     var commands = bot.commands.get(command.slice(prefix.length));
     if(commands) commands.run(bot,message, args);
+
+    for (let i = 0; i < swearWords.length; i++) {
+        
+        if (msg.includes(swearWords[i])){
+    
+            message.delete();
+    
+            return message.reply("Please don't swear!").then(msg => msg.delete({timeout: 5000}));
+        }
+    }
+    
     if(!message.content.startsWith(prefix)) return; 
 
     
