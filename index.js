@@ -7,7 +7,7 @@ const ms = require("ms");
 const fs = require("fs");
 const { error } = require('console');
 
-const xp = require('./levels.json')
+const levelFile = require('./levels.json')
 
 bot.on('ready', async () =>{
     console.log(`---------------`)
@@ -47,38 +47,34 @@ bot.on('message', async message=>{
     if(message.author.bot) return;
     if(message.channel.type == "dm") return;
 
-    let xpAdd = Math.floor(Math.random() * 7) + 8;
+    var randomXP = Math.floor(Math.random(1) * 10) + 1;
 
-    var guildXP = message.guild;
-    
-    if(!xp[message.author.id]){
-        xp[message.author.id] = {
+    var idUser = message.author.id;
+
+    if(!levelFile[idUser]){
+        levelFile[idUser] = {
+
             xp: 0,
             level: 1
-        };
+        }
     }
 
-    if(!xp[message.author.id].guild){
-        xp[message.author.id] = {
-            xp: 0,
-            level: 1,
-            guild: guildXP
-        };
-    }
+    levelFile[idUser].xp += randomXP;
 
-    
-    let curxp = xp[message.author.id].xp;
-    let curlvl = xp[message.author.id].level;
-    let nxtLvl = xp[message.author.id].level * 500;
-    xp[message.author.id].xp = curxp + xpAdd;
+    var levelUser = levelFile[idUser].level;
+    var xpUser = levelFile[idUser].xp
+    var nextLevel = levelUser * 300;
 
-    if(nxtLvl <= xp[message.author.id].xp){
-        xp[message.author.id].level = curlvl + 1;
-        message.channel.send(`GG ${message.author}, You've reached level ${xp[message.author.id].level}`)
+    if(xpUser >= nextLevel){
+
+        levelFile[idUser].level += 1;
+
+        fs.writeFile("./levels.json", JSON.stringify(levelFile), err => {
+            if(err) return console.log(err)
+        });
+
+        message.channel.send(`GG ${message.author}, You've reached level ${levelFile[idUser].level}`);
     }
-    fs.writeFile("./levels.json", JSON.stringify(xp), (err) => {
-        if(err) console.log(err)
-    });
 
     var prefix = botConfig.prefix;
 
