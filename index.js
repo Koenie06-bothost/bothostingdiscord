@@ -100,15 +100,7 @@ bot.on('message', async message=>{
         }
     } 
 
-    var prefixes = JSON.parse(fs.readFileSync("./prefixes.json"));
-
-    if(!prefixes[message.guild.id]){
-        prefixes[message.guild.id] = {
-        prefixes: prefix
-        };
-    }
-
-    var prefix = prefixes[message.guild.id].prefixes;
+    
 
     switch(args[0]){
         case 'offline':
