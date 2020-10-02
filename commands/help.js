@@ -20,8 +20,8 @@ module.exports.run = async (client, message, args) => {
              .setTitle('test')
              .setFooter(`Page ${page}/${pages.length}`)
             message.channel.send(testEmbed).then(msg => {
-                msg.react(':rewind:').then(r => {
-                    msg.react(':fast_forward:')
+                msg.react('◀').then(r => {
+                    msg.react('▶')
 
                     const backwardsFilter = (reaction, user) => reaction.emoji.name === ':rewind:' && user.id === message.author.id;
                     const forwardsFilter = (reaction, user) => reaction.emoji.name === ':fast_forward:' && user.id === message.author.id;
