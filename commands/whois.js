@@ -6,8 +6,8 @@ const moment = require("moment");
 
 module.exports.run = async (client, message, args) => {
 
-    let mentionedMember = message.mentions.members.first() || message.author;
-    let mentionedUser = message.mentions.users.first() || message.author;
+    let mentionedMember = message.guild.member(message.mentions.users.first()) || message.author;
+    let mentionedUser = message.guild.member(message.mentions.users.first()) || message.author;
 
     var roles = mentionedMember.roles.cache.size - 1;
     var roleNames = mentionedMember.roles.cache.map(r => r).join(" ").replace("@everyone", "");
