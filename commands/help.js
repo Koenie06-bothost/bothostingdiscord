@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
             var online = message.guild.members.cache.filter(m => m.user.presence.status == "online" || m.user.presence.status == "dnd" || m.user.presence.status == "idle").size;
             var offline = message.guild.members.cache.filter(m => m.user.presence.status == "offline").size;
 
-            let pages = [];
+            let pages = ['test', 'test1', 'test2'];
             let page = 1;
 
             var testEmbed = new discord.MessageEmbed()
