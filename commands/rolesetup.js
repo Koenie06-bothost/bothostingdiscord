@@ -14,7 +14,7 @@ module.exports.run = async (client, message, args) => {
      .setFooter(`More coming soon!`)
     message.channel.send(botEmbed).then((m => {
         m.react('📊')
-        m.react('<:update:760898844417720400>')
+        m.react('760898844417720400')
     }))
     
 }
