@@ -25,7 +25,12 @@ module.exports.run = async (client, message, args) => {
     })
     var Embed = new discord.MessageEmbed()
      .setTitle(`All animated emoji's in this server: `)
-     .setDescription(`**Nitro Animated Emoji's [${Animated}]**: `)
+     .setDescription(`**Nitro Animated Emoji's [${Animated}]: ** 
+     ${EmojisAnimated}
+     
+     **Normal Animated Emoji's [${EmojiCount}]: **
+     ${OverallEmojis}`)
+    message.channel.send(Embed)
 
 }
 
