@@ -5,59 +5,37 @@ const ms = require('ms');
 
 module.exports.run = async (client, message, args) => {
 
-    var options = ["(❁´◡`❁)", "╰(*°▽°*)╯", "ಠ_ಠ", "༼ つ ◕_◕ ༽つ", "(¬_¬ )", "¯/_(ツ)_/¯", "( •_•)>⌐■-■", "(*/ω＼*)", "( ´･･)ﾉ(._.`)"];
-
-    var result = options[Math.floor(Math.random() * options.length)];
-
-    if(args[0] == "emoji"){
-
-        if(result == "(❁´◡`❁)") {
-            
-            return message.channel.send("(❁´◡`❁)");
-
-        } else if(result == "╰(*°▽°*)╯") {
-
-            return message.channel.send("╰(*°▽°*)╯");
-
-
-        } else if(result == "ಠ_ಠ") {
-
-            return message.channel.send("ಠ_ಠ");
-
-        } else if(result == "༼ つ ◕_◕ ༽つ") {
-
-            return message.channel.send("༼ つ ◕_◕ ༽つ");
-
-        } else if(result == "(¬_¬ )") {
-
-            return message.channel.send("(¬_¬ )");
-
-        } else if(result == "¯/_(ツ)_/¯") {
-
-            return message.channel.send("¯/_(ツ)_/¯");
-
-        } else if(result == "( •_•)>⌐■-■") {
-
-            return message.channel.send("( •_•)>⌐■-■");
-
-        } else if(result == "(*/ω＼*)") {
-
-            return message.channel.send("(*/ω＼*)");
-
-        } else if(result == "( ´･･)ﾉ(._.`)") {
-
-            return message.channel.send("( ´･･)ﾉ(._.`)");
-
-        } else if(result == "( ͡° ͜ʖ ͡°)") {
-
-            return message.channel.send("( ͡° ͜ʖ ͡°)");
-
-        }
+    let Emojis = "";
+    let EmojisAnimated = "";
+    let EmojiCount = 0;
+    let Animated = 0;
+    let OverallEmojis = 0;
+    function Emoji(id){
+        return bot.emojis.cache.get(id).toString()
     }
+    message.guild.emojis.cache.forEach(emoji=> {
+        OverallEmojis++;
+        if(emoji.animated){
+            Animated++;
+            EmojisAnimated+=Emoji(emoji.id)
+        } else {
+            EmojiCount++;
+            Emojis+=Emoji(emoji.id)
+        }
+    })
+    var Embed = new discord.MessageEmbed()
+     .setTitle(`All animated emoji's in this server: `)
+     .setDescription(`**Nitro Animated Emoji's [${Animated}]: ** 
+     ${EmojisAnimated}
+     
+     **Normal Animated Emoji's [${EmojiCount}]: **
+     ${OverallEmojis}`)
+    message.channel.send(Embed)
 
 }
 
+
 module.exports.help = {
     name: "emoji",
-    description:"dit is de emoji commando."
+    description:"emoji command"
 }
