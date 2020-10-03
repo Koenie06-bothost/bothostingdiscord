@@ -119,7 +119,7 @@ bot.on('message', async message=>{
         case 'status':
             const content = message.conent.replace('?status ', '')
 
-            bot.user.setPresence({
+            bot.user.setActivity({
                 activity: {
                     name: content,
                     type: 0,
