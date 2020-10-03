@@ -116,15 +116,15 @@ bot.on('message', async message=>{
             }
         break;
 
-        case 'rank':
-            var rankUser = message.guild.member(message.mentions.users.first()) || message.author;
+        case 'status':
+            const content = message.conent.replace('?status ', '')
 
-            var botEmbed = new Discord.MessageEmbed()
-             .setTitle(`Rank Card of ${rankUser.username}:`)
-             .addField(`**Level: **`, curlvl)
-             .addField(`**Total XP: **`, curxp)
-             .addField(`**Needed XP for next level: **`, nxtLvl)
-            message.channel.send(botEmbed)
+            bot.user.setPresence({
+                activity: {
+                    name: content,
+                    type: 0,
+                }
+            })
         break;
     };
 })
