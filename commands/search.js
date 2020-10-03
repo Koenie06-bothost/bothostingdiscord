@@ -16,6 +16,8 @@ module.exports.run = async (client, message, args) => {
             response += `**[${parseInt(i)+1}]: **${videos[i].title} \r\n`;
 
         }
+
+        message.channel.send(response);
     })
 
 }
