@@ -15,6 +15,13 @@ bot.on('ready', async () =>{
             console.log(`---------------`);
         console.log(`Online at ${bot.guilds.size} servers`);
     console.log(`Logged in as ${bot.user.tag}`);
+
+    const activities_list = ["?help"];
+
+    setInterval(() => {
+        const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); 
+        client.user.setActivity(activities_list[index]); 
+    }, 50000); 
 bot.user.setStatus("dnd")
     
 });
@@ -92,7 +99,11 @@ bot.on('message', async message=>{
     var messageArray = message.content.split(" ");
     var command = messageArray[0];
     var commands = bot.commands.get(command.slice(prefix.length));
-    if(commands) commands.run(bot,message, args);
+    if(commands) commands.run(bot,message, args, options);
+
+    var options = {
+        active: activeSongs
+    };
 
     for (let i = 0; i < swearWords.length; i++) {
         
