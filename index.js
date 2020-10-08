@@ -21,8 +21,8 @@ bot.on('ready', async () =>{
     const activities_list = ["?help"];
 
     setInterval(() => {
-        const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); 
-        client.user.setActivity(activities_list[index]); 
+        const indexj = Math.floor(Math.random() * (activities_list.length - 1) + 1); 
+        bot.user.setActivity(activities_list[indexj]); 
     }, 50000); 
 bot.user.setStatus("dnd")
     
