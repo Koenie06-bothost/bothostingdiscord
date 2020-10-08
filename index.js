@@ -7,6 +7,8 @@ const ms = require("ms");
 const fs = require("fs");
 const { error } = require('console');
 
+const activeSongs = new Map();
+
 const levelFile = require('./levels.json')
 
 bot.on('ready', async () =>{
