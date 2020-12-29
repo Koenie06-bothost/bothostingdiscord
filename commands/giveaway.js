@@ -20,11 +20,11 @@ module.exports.run = async (client, message, args) => {
      **Giveaway ends: **${args[1]}`)
      .setTimestamp(Date.now()+ms(args[1]))
      .setColor("#d98a23")
-    message.channel.send(botEmbed).then((m => {
-        m.react('🎉')
+    message.channel.send(botEmbed).then((msg => {
+        msg.react('🎉')
     }))
     setTimeout(() => {
-        let winner = m.reactions.cache.get("🎉").users.cache.filter(u=>!u.bot).random()
+        let winner = msg.reactions.cache.get("🎉").users.cache.filter(u=>!u.bot).random()
         if(!winner) {
             var non = new discord.MessageEmbed()
              .setColor("#ff0000")

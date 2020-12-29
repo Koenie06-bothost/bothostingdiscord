@@ -2,43 +2,23 @@ const discord = require('discord.js');
 const bot = new discord.Client();
 const search = require("yt-search");
 
-module.exports.run = async (client, message, args, options) => {
+module.exports.run = async (client, message, args) => {
 
-    search(args.join(" "), function (err, res) {
+    search(args.join(' '), function(err, res){
 
-        if(err) console.log(err)
+        if(err) message.channel.send("There was a error to search that song!")
 
         var videos = res.videos.slice(0, 10);
-
         var response = '';
 
         for (var i in videos) {
 
-            response += `**[${parseInt(i)+1}]** - ${videos[i].title} \n ${videos[i].url} \r\n\n`
+            response += `**[${parseInt(i)+1}]: **${videos[i].title} \r\n`;
 
         }
 
-        response += `**Choose a number infront of 1/${videos.length}**`
-
-        var botEmbed = new discord.MessageEmbed()
-         .setColor("RANDOM")
-         .setDescription(response)
-        message.channel.send(botEmbed)
-
-        const filter = music => !isNaN(music.content) && music.content < videos.length && music.content > 0;
-
-        const collection = message.channel.createMessageCollector(filter);
-
-        collection.videos = videos;
-
-        collection.once('collect', function (music) {
-
-            var commandFile = require('./play.js');
-
-            commandFile.run(client, message, [this.videos[parseInt(music.content) - 1].url], options);
-
-        });
-    });
+        message.channel.send(response);
+    })
 
 }
 

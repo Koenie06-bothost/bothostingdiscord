@@ -16,7 +16,7 @@ module.exports.run = async (client, message, args) => {
     if(!message.guild.me.hasPermission("MANAGE_ROLES"))  return message.reply("I dont have perms to remove that role!")
 
     if(!rMember.roles.cache.has(role.id)) {
-        return message.reply("That user don't have that role!")
+        return message.reply("That user doesn't have that role!")
     } else {
         await rMember.roles.remove(role.id).catch(err => console.log(err))
         var botEmbed = new discord.MessageEmbed()
